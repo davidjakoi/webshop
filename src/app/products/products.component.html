@@ -1,0 +1,45 @@
+@if (productsService.isLoading) {
+<mat-spinner></mat-spinner>
+}
+@else {
+<table mat-table [dataSource]="productsService.products()" class="mat-elevation-z8">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="image">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element"><img [ngSrc]="element.img" srcset width="30" height="30"
+        [alt]="element.name + ' image'"></td>
+  </ng-container>
+
+  <ng-container matColumnDef="availableAmount">
+    <th mat-header-cell *matHeaderCellDef> Available Amount </th>
+    <td mat-cell *matCellDef="let element"> {{element.availableAmount}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="minOrderAmount">
+    <th mat-header-cell *matHeaderCellDef> Minimum Order Amount </th>
+    <td mat-cell *matCellDef="let element"> {{element.minOrderAmount}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef> Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+  </ng-container>
+  <ng-container matColumnDef="addToCart">
+    <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-flat-button aria-label="Open dialog" (click)="openDialog(element)">
+        Add to cart
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+}

@@ -1,0 +1,11 @@
+.mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}

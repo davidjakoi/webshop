@@ -1,0 +1,13 @@
+.cart-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-button {
+  background-color: #8B0000;
+}
+
+.continue-shopping-button {
+  margin-bottom: 20px;
+}
