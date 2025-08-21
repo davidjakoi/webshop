@@ -24,6 +24,6 @@ export class CartComponent {
   }
 
   getTotalPrice() {
-    return this.productsService.cart().map(cartItem => cartItem.price).reduce((a, b) => a + b);
+    return this.productsService.cart().map(cartItem => cartItem.price).reduce((cartItemA, cartItemB) => cartItemA + cartItemB);
   }
 }

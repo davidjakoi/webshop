@@ -7,14 +7,14 @@ import { CartItem } from '../models/cart.model';
   providedIn: 'root'
 })
 export class ProductsService {
-  private http = inject(HttpClient);
+  #http = inject(HttpClient);
   public cart = signal<CartItem[]>([]);
   public products = signal<Product[]>([]);
   public isLoading = false;
 
   getProducts(): void {
     this.isLoading = true;
-    this.http.get<Product[]>('https://63c10327716562671870f959.mockapi.io/products').subscribe((products: Product[]) => {
+    this.#http.get<Product[]>('https://63c10327716562671870f959.mockapi.io/products').subscribe((products: Product[]) => {
       this.products.set(products);
       this.isLoading = false;
     });

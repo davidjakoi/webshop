@@ -28,7 +28,7 @@ export class CartDialogComponent {
   readonly dialogRef = inject(MatDialogRef<CartDialogComponent>);
   readonly data = inject<{ product: Product }>(MAT_DIALOG_DATA);
   readonly productsService = inject(ProductsService);
-  private _snackBar = inject(MatSnackBar);
+  #_snackBar = inject(MatSnackBar);
   amount = new FormControl('', [Validators.required, Validators.min(this.data.product.minOrderAmount), Validators.max(this.data.product.availableAmount)]);
 
   closeDialog(): void {
@@ -38,7 +38,7 @@ export class CartDialogComponent {
   addToCart() {
     this.productsService.addProductToCart(this.data.product.id, this.amount.value!);
     this.dialogRef.close();
-    this._snackBar.open('Product successfully added to your cart!', '', {
+    this.#_snackBar.open('Product successfully added to your cart!', '', {
       duration: 1500,
       horizontalPosition: 'center',
       verticalPosition: 'top'
